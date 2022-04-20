@@ -1,0 +1,25 @@
+#running light with different color
+from adafruit_circuitplayground import cp
+import time
+cp.pixels.brightness = 0.3
+cp.pixels.fill((0, 0, 0))  # Turn off the NeoPixels if they're on!
+while True:
+    Epoch = 100
+    On = 0.01
+    Off = 0.01 
+    table = [(0, 0, 128), (0, 250, 0), (250, 0, 0), (128, 0, 0), 
+             (0, 0, 250), (0, 128, 0), (128, 0, 128), (0, 128, 128), (128, 128, 0), 
+             (10, 10, 10)]
+    if cp.button_a:
+        Cycle = 1
+        while (Cycle < Epoch):
+            for i in range(10):
+                cp.pixels[i] = table[i]
+                cp.pixels.show()
+                time.sleep(On)
+                cp.pixels.fill((0, 0, 0))
+                time.sleep(Off)
+            
+            Cycle = Cycle + 1
+
+
